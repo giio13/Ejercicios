@@ -1,0 +1,22 @@
+Ejercicio 4
+		
+			Escribe las instrucciones para actualizar los archivos de una aplicación web
+			localizada en /var/www/michangarrito desde su proyecto localizado en
+			/home/ubuntu/michangarrito. Los archivos necesarios se encuentran en la carpeta
+			dist dentro del proyecto.
+			Considera que estás en una terminal linux posicionado en ~/michangarrito y
+			necesitas hacer una copia de seguridad de /var/www/michangarrito en
+			/home/ubuntu/backups anexando la fecha actual (AAAA-MM-DD) al nombre, por
+			ejemplo /home/ubuntu/backups/michangarrito_2020-02-02.
+			
+			
+			--Backup de los archivos
+			nano backups.sh
+			fecha = $(date + %y-%m-%d)
+			hora = $(date +%H:%M)
+			tar -cvf /home/ubuntu/backups/michangarrito_$fecha'_'$hora /var/www/michangarrito
+			chmod 777 backups.sh
+			./backups.sh
+			
+			--Actualizar la aplicacion web
+			cp -a /home/ubuntu/michangarrito/dist. /home/ubuntu/michangarrito/
